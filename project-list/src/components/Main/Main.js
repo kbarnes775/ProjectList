@@ -6,6 +6,7 @@ class Main extends Component {
         return (
             <div className="container">
                 <h2>This is the main component</h2>
+
                 <ProjectList/>
             </div>
         );

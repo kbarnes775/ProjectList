@@ -11,6 +11,7 @@ import Main from './components/Main/Main'
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import NotFound from './components/NotFound/NotFound';
+import CreateProject from "./components/CreateProject/CreateProject";
 
 
 if(localStorage.jwtToken) {
@@ -36,6 +37,7 @@ class App extends Component {
                     <Route exact path="/" component={ Main } />
                     <Route path="/login" component={ Login }/>
                     <Route path="/register" component={ Register }/>
+                    <Route path='/create-project' component={ CreateProject }/>
                     <Route component={ NotFound }/>
                 </Switch>
             </div>
