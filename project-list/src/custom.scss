@@ -1,3 +1,65 @@
+/*============================START BOOTSTRAP VARIABLE OVERRIDES============================*/
+/*----ADD NEW VARIABLES----*/
+/*--colors--*/
+$dull-green: #396934;
 
+$colors: (
+  'dull-green':         $dull-green,
+
+);
+/*----OVERRIDE THEME COLORS----*/
+$primary:               $dull-green;
+
+$theme-colors: (
+  'primary':            $primary,
+);
+  /*---OVERRIDE FONTS---*/
+//$font-family-sans-serif: "Open Sans", sans-serif;
+//$font-family-serif: "PT Serif", serif;
+//$font-family-base: $font-family-sans-serif;
+//$font-size-base: 0.875rem;
+/*============================END BOOTSTRAP VARIABLE OVERRIDES============================*/
 
 @import '~bootstrap/scss/bootstrap.scss';
+
+@mixin half-s-ease {
+  transition:         all 0.5s ease;
+  -moz-transition:    all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition:     all 0.5s ease;
+  -o-transition:      all 0.5s ease;
+}
+@mixin third-s-ease {
+  transition:         all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition:     all 0.3s ease;
+  -o-transition:      all 0.3s ease;
+}
+@mixin hover-ease {
+  transition:         background-color 0.3s ease;
+  -moz-transition:    background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -ms-transition:     background-color 0.3s ease;
+  -o-transition:      background-color 0.3s ease;
+}
+@mixin click-anim {
+  -webkit-transform: translate(.05rem,.075rem);
+  -moz-transform:    translate(.05rem,.075rem);
+  -ms-transform:     translate(.05rem,.075rem);
+  -o-transform:      translate(.05rem,.075rem);
+  transform:         translate(.05rem,.075rem);
+}
+
+.projects {
+  .card {
+    @include hover-ease;
+    &:hover {
+      background-color: rgba($primary, .9)!important;
+      cursor: pointer;
+    }
+    &:active {
+      @include click-anim;
+    }
+  }
+}
