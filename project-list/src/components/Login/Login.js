@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/authentication';
+import { loginUser } from '../../actions/authentication';
 import classnames from 'classnames';
 
 class Login extends Component {
@@ -34,13 +34,13 @@ class Login extends Component {
 
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/webspot/dashboard');
+            this.props.history.push('/');
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/webspot/dashboard')
+            this.props.history.push('/')
         }
         if(nextProps.errors) {
             this.setState({

@@ -6,9 +6,13 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
 
+import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main'
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -28,8 +32,10 @@ class App extends Component {
         <Provider store = { store }>
           <Router>
             <div>
-              <Route exact path="/" component={ Main } />
-              {/*<Route path="/webspot" component={ WebspotMain }/>*/}
+                <Navbar />
+                <Route exact path="/" component={ Main } />
+                <Route path="/login" component={ Login }/>
+                <Route path="/register" component={ Register }/>
             </div>
           </Router>
         </Provider>
