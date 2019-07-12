@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
+const Project = require('../models/Project');
 const User = require('../models/User');
 
 //
@@ -10,103 +11,69 @@ const User = require('../models/User');
 //
 router.post('/project/create', function(req, res) {
 
+    // TODO - Make Validation Function For Project Creation
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if(!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({
-        email: req.body.email
-    }).then(user => {
-        if(user) {
+    Project.findOne({
+        name: req.body.name
+    }).then(project => {
+        if(project) {
             return res.status(400).json({
-                email: 'Email already exists'
+                name: 'A project with this name already exists'
             });
         }
         else {
-            const avatar = gravatar.url(req.body.email, {
-                s: '200',
-                r: 'pg',
-                d: 'mm'
-            });
-            const newUser = new User({
+            // Create New Project
+            const newProject = new Project({
                 name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-                avatar
+                lists
             });
+            newProject.save()
+                .then(doc => {
+                    if(!doc || doc.length === 0){
+                        return res.status(500).send(doc)
+                    }
+                    res.status(201).send(doc);
+                })
+                .catch(err => {
+                    res.status(500).json(err);
+                })
 
-            bcrypt.genSalt(10, (err, salt) => {
-                if(err) console.error('There was an error', err);
-                else {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if(err) console.error('There was an error', err);
-                        else {
-                            newUser.password = hash;
-                            newUser
-                                .save()
-                                .then(user => {
-                                    res.json(user)
-                                });
-                        }
-                    });
-                }
-            });
+            //TODO - ADD Project to Project array for current user
+            const { user } = this.props.auth;
+            User.findById(user.ObjectId)
+                .then((user) => {
+                    if(!user) {
+                        return res.status(404).send('No User is Signed In')
+                    }
+                    user.projects.push(newProject);
+                    user.save()
+                        .then(doc => {
+                            if(!doc || doc.length === 0){
+                                return res.status(500).send(doc)
+                            }
+                            res.status(201).send(doc);
+                        })
+                        .catch(err => {
+                            res.status(500).json(err);
+                        })
+                })
         }
     });
 });
 
-router.post('/login', (req, res) => {
-
-    const { errors, isValid } = validateLoginInput(req.body);
-
-    if(!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    const email = req.body.email;
-    const password = req.body.password;
-
-    User.findOne({email})
-        .then(user => {
-            if(!user) {
-                errors.email = 'User not found'
-                return res.status(404).json(errors);
-            }
-            bcrypt.compare(password, user.password)
-                .then(isMatch => {
-                    if(isMatch) {
-                        const payload = {
-                            id: user.id,
-                            name: user.name,
-                            avatar: user.avatar
-                        }
-                        jwt.sign(payload, 'secret', {
-                            expiresIn: 3600
-                        }, (err, token) => {
-                            if(err) console.error('There is some error in token', err);
-                            else {
-                                res.json({
-                                    success: true,
-                                    token: `Bearer ${token}`
-                                });
-                            }
-                        });
-                    }
-                    else {
-                        errors.password = 'Incorrect Password';
-                        return res.status(400).json(errors);
-                    }
-                });
-        });
-});
-
-router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
-    return res.json({
-        id: req.user.id,
-        name: req.user.name,
-        email: req.user.email
-    });
+// Get all Projects
+router.get('/project/getAll', (req, res) => {
+    Project.find()
+        .then(projects => {
+            res.json(projects);
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
 });
 
 module.exports = router;
