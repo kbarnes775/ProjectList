@@ -11,7 +11,6 @@ import Main from './components/Main/Main'
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 if(localStorage.jwtToken) {
