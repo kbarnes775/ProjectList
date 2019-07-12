@@ -4,7 +4,7 @@ import ProjectCard from "../ProjectCard/ProjectCard";
 class ProjectList extends Component {
     render() {
         return (
-            <div id="projects" className="row">
+            <div className="projects row">
                 <ProjectCard/>
                 <ProjectCard/>
                 <ProjectCard/>

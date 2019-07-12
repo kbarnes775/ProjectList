@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 class ProjectCard extends Component {
 
     openCard() {
-
-    }
+        console.log('Click!');
+    };
 
     render() {
         return (
             <div className="col-md-6 col-lg-3 p-2">
-                <div className="card" onClick={this.openCard}>
+                <div className="card bg-primary text-white" onClick={this.openCard}>
                     <div className="card-body">
                         <h4 className="card-title text-center pb-3">
                             Project Name
