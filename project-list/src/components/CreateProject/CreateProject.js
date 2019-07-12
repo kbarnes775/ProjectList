@@ -10,11 +10,8 @@ class CreateProject extends Component {
         super(props);
         this.state = {
             name: '',
-            email: '',
-            password: '',
-            password_confirm: '',
             errors: {}
-        }
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -27,15 +24,14 @@ class CreateProject extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = {
+        const project = {
             name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            password_confirm: this.state.password_confirm
-        }
-        this.props.registerUser(user, this.props.history);
+        };
+        // TODO - make a redux action for createProject (Similar to registerUser)
+        this.props.createProject(project, this.props.history);
     }
 
+    // TODO - Handle What will happen after project is created
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
             this.props.history.push('/')
@@ -47,17 +43,15 @@ class CreateProject extends Component {
         }
     }
 
+   // TODO - Handle what happens when function loads
     componentDidMount() {
-        if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/');
-        }
     }
 
     render() {
         const { errors } = this.state;
         return(
             <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-                <h2 style={{marginBottom: '40px'}}>Registration</h2>
+                <h2 style={{marginBottom: '40px'}}>Create New Project</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <div className="form-group">
                         <input
@@ -73,47 +67,8 @@ class CreateProject extends Component {
                         {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                     </div>
                     <div className="form-group">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.email
-                            })}
-                            name="email"
-                            onChange={ this.handleInputChange }
-                            value={ this.state.email }
-                        />
-                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.password
-                            })}
-                            name="password"
-                            onChange={ this.handleInputChange }
-                            value={ this.state.password }
-                        />
-                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Confirm Password"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.password_confirm
-                            })}
-                            name="password_confirm"
-                            onChange={ this.handleInputChange }
-                            value={ this.state.password_confirm }
-                        />
-                        {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}
-                    </div>
-                    <div className="form-group">
                         <button type="submit" className="btn btn-primary">
-                            Register User
+                            Create Project
                         </button>
                     </div>
                 </form>
@@ -123,7 +78,7 @@ class CreateProject extends Component {
 }
 
 CreateProject.propTypes = {
-    registerUser: PropTypes.func.isRequired,
+    createProject: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 
@@ -132,4 +87,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(withRouter(CreateProject))
+export default connect(mapStateToProps, { createProject })(withRouter(CreateProject));
