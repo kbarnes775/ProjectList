@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const passport = require('passport');
+
+const validateProjectInput = require('../validation/project');
 
 const Project = require('../models/Project');
 const User = require('../models/User');
@@ -12,7 +12,7 @@ const User = require('../models/User');
 router.post('/project/create', function(req, res) {
 
     // TODO - Make Validation Function For Project Creation
-    const { errors, isValid } = validateRegisterInput(req.body);
+    const { errors, isValid } = validateProjectInput(req.body);
 
     if(!isValid) {
         return res.status(400).json(errors);
