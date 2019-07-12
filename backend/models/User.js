@@ -18,12 +18,18 @@ const UserSchema = new Schema({
     avatar: {
         type: String
     },
+    projects: [{
+        type: mongoose.Schema.Types.ObjectId
+    }],
+    isAdmin: {
+        type: Boolean
+    },
     date: {
         type: Date,
         default: Date.now
     }
 });
 
-const User = mongoose.model('users', UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
