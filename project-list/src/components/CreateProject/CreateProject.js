@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
+import { createProject } from '../../actions/project';
+
 
 class CreateProject extends Component {
 
@@ -28,6 +30,7 @@ class CreateProject extends Component {
             name: this.state.name,
         };
         // TODO - make a redux action for createProject (Similar to registerUser)
+        console.log("I am in the CreateProject.js Handle Submit Function");
         this.props.createProject(project, this.props.history);
     }
 
@@ -87,4 +90,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(withRouter(CreateProject));
+export default connect(mapStateToProps, { createProject })(withRouter(CreateProject));
