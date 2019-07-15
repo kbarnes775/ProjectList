@@ -20,9 +20,9 @@
   -o-transition:      background-color 0.3s ease;
 }
 @mixin click-anim {
-  -webkit-transform: translate(.05rem,.075rem);
-  -moz-transform:    translate(.05rem,.075rem);
-  -ms-transform:     translate(.05rem,.075rem);
-  -o-transform:      translate(.05rem,.075rem);
-  transform:         translate(.05rem,.075rem);
+  -webkit-transform: translate(.04rem,.075rem);
+  -moz-transform:    translate(.04rem,.075rem);
+  -ms-transform:     translate(.04rem,.075rem);
+  -o-transform:      translate(.04rem,.075rem);
+  transform:         translate(.04rem,.075rem);
 }
