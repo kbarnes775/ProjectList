@@ -11,8 +11,7 @@ const User = require('../models/User');
 //
 router.post('/create', function(req, res) {
 
-    console.log('This is the post method in project routes', req.body);
-    // TODO - Make Validation Function For Project Creation
+    console.log('This is the req of the create function', req.body);
     const { errors, isValid } = validateProjectInput(req.body);
 
     if(!isValid) {
@@ -44,7 +43,8 @@ router.post('/create', function(req, res) {
                 })
 
             //TODO - ADD Project to Project array for current user
-            const { user } = req.body.user;
+            const user = req.body.user ? req.body.user : undefined;
+            console.log('This is the user adding the project',user);
             User.findById(user.ObjectId)
                 .then((user) => {
                     if(!user) {

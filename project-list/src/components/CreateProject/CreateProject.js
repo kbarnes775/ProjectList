@@ -28,7 +28,8 @@ class CreateProject extends Component {
         e.preventDefault();
         const project = {
             name: this.state.name,
-            lists: []
+            lists: [],
+            user: this.props.auth.user
         };
         this.props.createProject(project, this.props.auth, this.props.history);
     }
@@ -47,6 +48,7 @@ class CreateProject extends Component {
 
    // TODO - Handle what happens when function loads
     componentDidMount() {
+        console.log('This is the auth props', this.props.auth);
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/')
         }

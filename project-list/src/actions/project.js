@@ -3,7 +3,7 @@ import { GET_ERRORS } from './types';
 
 export const createProject = (project, user, history) => dispatch => {
     console.log('Hello from the project action');
-    axios.post('/api/projects/create', project)
+    axios.post('/api/projects/create', project, user)
         .then(res => {
             console.log('Project Added Successfully!');
             history.push('/')
