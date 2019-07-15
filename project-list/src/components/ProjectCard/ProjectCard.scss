@@ -1,0 +1,15 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.projects {
+  .card {
+    @include hover-ease;
+    &:hover {
+      background-color: lighten($primary, 5%)!important;
+      cursor: pointer;
+    }
+    &:active {
+      @include click-anim;
+    }
+  }
+}

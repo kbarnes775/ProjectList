@@ -1,0 +1,28 @@
+@mixin half-s-ease {
+  transition:         all 0.5s ease;
+  -moz-transition:    all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition:     all 0.5s ease;
+  -o-transition:      all 0.5s ease;
+}
+@mixin third-s-ease {
+  transition:         all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition:     all 0.3s ease;
+  -o-transition:      all 0.3s ease;
+}
+@mixin hover-ease {
+  transition:         background-color 0.3s ease;
+  -moz-transition:    background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -ms-transition:     background-color 0.3s ease;
+  -o-transition:      background-color 0.3s ease;
+}
+@mixin click-anim {
+  -webkit-transform: translate(.05rem,.075rem);
+  -moz-transform:    translate(.05rem,.075rem);
+  -ms-transform:     translate(.05rem,.075rem);
+  -o-transform:      translate(.05rem,.075rem);
+  transform:         translate(.05rem,.075rem);
+}
