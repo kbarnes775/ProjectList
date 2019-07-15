@@ -28,10 +28,9 @@ class CreateProject extends Component {
         e.preventDefault();
         const project = {
             name: this.state.name,
+            lists: []
         };
-        // TODO - make a redux action for createProject (Similar to registerUser)
-        console.log("I am in the CreateProject.js Handle Submit Function");
-        this.props.createProject(project, this.props.history);
+        this.props.createProject(project, this.props.auth, this.props.history);
     }
 
     // TODO - Handle What will happen after project is created
@@ -48,6 +47,9 @@ class CreateProject extends Component {
 
    // TODO - Handle what happens when function loads
     componentDidMount() {
+        if(!this.props.auth.isAuthenticated) {
+            this.props.history.push('/')
+        }
     }
 
     render() {

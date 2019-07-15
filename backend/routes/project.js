@@ -9,8 +9,9 @@ const User = require('../models/User');
 //
 // Create a new Project
 //
-router.post('/project/create', function(req, res) {
+router.post('/create', function(req, res) {
 
+    console.log('This is the post method in project routes', req.body);
     // TODO - Make Validation Function For Project Creation
     const { errors, isValid } = validateProjectInput(req.body);
 
@@ -29,7 +30,7 @@ router.post('/project/create', function(req, res) {
             // Create New Project
             const newProject = new Project({
                 name: req.body.name,
-                lists
+                lists: req.body.lists
             });
             newProject.save()
                 .then(doc => {
@@ -43,7 +44,7 @@ router.post('/project/create', function(req, res) {
                 })
 
             //TODO - ADD Project to Project array for current user
-            const { user } = this.props.auth;
+            const { user } = req.body.user;
             User.findById(user.ObjectId)
                 .then((user) => {
                     if(!user) {
@@ -66,7 +67,7 @@ router.post('/project/create', function(req, res) {
 });
 
 // Get all Projects
-router.get('/project/getAll', (req, res) => {
+router.get('/getAll', (req, res) => {
     Project.find()
         .then(projects => {
             res.json(projects);
