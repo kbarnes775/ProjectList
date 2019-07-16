@@ -12,9 +12,11 @@ $gray-800: #303030;
 $gray-900: #202020;
 
 $dull-green: #396934;
+$light-green: #6ac42b;
 
 $colors: (
         'dull-green':         $dull-green,
+        'light-green':        $light-green,
 
 );
 /*----OVERRIDE THEME COLORS----*/
@@ -29,6 +31,8 @@ $theme-colors: (
 //$font-family-base: $font-family-sans-serif;
 //$font-size-base: 0.875rem;
 
+/*---LINK COLOR---*/
+$link-color:      $light-green;
 /*---SETTINGS FOR <BODY>---*/
 $body-bg:         $gray-700;
 $body-color:      $gray-100;

@@ -4,11 +4,11 @@ import ProjectList from '../ProjectList/ProjectList';
 class Main extends Component {
     render() {
         return (
-            <div className="container">
+            <main className="container">
                 <h2>This is the main component</h2>
 
                 <ProjectList/>
-            </div>
+            </main>
         );
     }
 }

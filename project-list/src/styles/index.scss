@@ -6,6 +6,10 @@
 }
 /*============================NEW STYLES============================*/
 
+* {
+  @include third-s-ease;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

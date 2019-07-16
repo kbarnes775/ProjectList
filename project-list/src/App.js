@@ -5,13 +5,14 @@ import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
-
+import './styles/App.scss'
 import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main'
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import NotFound from './components/NotFound/NotFound';
 import CreateProject from "./components/CreateProject/CreateProject";
+import Footer from "./components/Footer/Footer";
 
 
 if(localStorage.jwtToken) {
@@ -40,6 +41,7 @@ class App extends Component {
                     <Route path='/create-project' component={ CreateProject }/>
                     <Route component={ NotFound }/>
                 </Switch>
+                <Footer/>
             </div>
           </Router>
         </Provider>
