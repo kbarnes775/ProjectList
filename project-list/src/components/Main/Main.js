@@ -4,11 +4,13 @@ import ProjectList from '../ProjectList/ProjectList';
 class Main extends Component {
     render() {
         return (
-            <div className="container">
-                <h2>This is the main component</h2>
+            <main className='flex-shrink-0'>
+                <div className="container">
+                    <h2>This is the main component</h2>
 
-                <ProjectList/>
-            </div>
+                    <ProjectList/>
+                </div>
+            </main>
         );
     }
 }
