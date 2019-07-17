@@ -5,9 +5,11 @@ class Footer extends Component {
 
     render() {
         return (
-            <footer id="footer" className="mt-auto py-3 bg-dark">
+            <footer className="mt-auto py-3 bg-dark">
                 <div className="container">
-                    <h1>Footer</h1>
+                    <div className="col-12 text-center">
+                        <h3>Footer</h3>
+                    </div>
                 </div>
             </footer>
         );

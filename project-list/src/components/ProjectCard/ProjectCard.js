@@ -19,6 +19,9 @@ class ProjectCard extends Component {
                             Information about the project
                         </p>
                     </div>
+                    <small className='text-right text-secondary p-2'>
+                        Number of todos
+                    </small>
                 </div>
             </div>
         );
