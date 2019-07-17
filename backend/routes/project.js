@@ -50,6 +50,7 @@ router.post('/create', function(req, res) {
                     if(!user) {
                         return res.status(404).send('No User is Signed In')
                     }
+                    console.log('New Project Being Pushed to User Model');
                     user.projects.push(newProject);
                     user.save()
                         .then(doc => {
@@ -70,7 +71,7 @@ router.post('/create', function(req, res) {
 router.get('/getAll', (req, res) => {
     Project.find()
         .then(projects => {
-            res.json(projects);
+            return projects.data
         })
         .catch(err => {
             res.status(500).json(err)
