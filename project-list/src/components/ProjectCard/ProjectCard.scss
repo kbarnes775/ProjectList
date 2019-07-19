@@ -4,12 +4,29 @@
 .projects {
   .card {
     @include hover-ease;
+    @include chalk-board;
+    .card-title {
+      font-family: 'Nothing You Could Do', serif;
+      font-size: $font-size-lg * 1.3;
+      border-bottom: .1rem solid $white;
+    }
+    .card-text{
+      //font-family: 'Nothing You Could Do', cursive;
+      font-size: $font-size-lg;
+      font-weight: 700;
+      color: rgba($white, 0.8)
+    }
     &:hover {
+
       background-color: lighten($primary, 5%)!important;
       cursor: pointer;
     }
     &:active {
       @include click-anim;
+    }
+    small {
+      font-family: 'Nothing You Could Do', serif;
+      font-size: $font-size-lg * .75;
     }
   }
 }

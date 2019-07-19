@@ -6,7 +6,7 @@ class Main extends Component {
         return (
             <main className='flex-shrink-0'>
                 <div className="container">
-                    <h2>This is the main component</h2>
+                    <h2 className='my-4'>Your Projects</h2>
 
                     <ProjectList/>
                 </div>

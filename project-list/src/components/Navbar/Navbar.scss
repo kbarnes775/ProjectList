@@ -1,0 +1,17 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.nav-color {
+  //background: linear-gradient(90deg, rgba($primary,1) 0%, rgba($flax,1) 60%, rgba($quartz,1) 100%);
+  @include chalk-board
+  //background: linear-gradient(0deg, rgba(#3c6a5f,1) 0%, rgba(76,133,119,1) 19%, rgba(76,133,119,1) 73%, rgba(#3c6a5f,1) 100%);
+}
+
+.navbar {
+  //font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar-brand {
+  font-size: $font-size-lg * 1.2;
+  font-weight: 700;
+}

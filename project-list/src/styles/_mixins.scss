@@ -26,3 +26,9 @@
   -o-transform:      translate(.04rem,.075rem);
   transform:         translate(.04rem,.075rem);
 }
+
+@mixin chalk-board {
+  background-color: rgba(76,133,119,1);
+  background-image: linear-gradient(0deg, rgba(60,106,95,.4) 0%, rgba(76,133,119,1) 50%, rgba(60,106,95,.4) 100%);
+}
+

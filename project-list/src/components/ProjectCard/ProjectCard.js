@@ -10,12 +10,12 @@ class ProjectCard extends Component {
     render() {
         return (
             <div className="col-md-6 col-lg-3 p-2">
-                <div className="card bg-primary text-white" onClick={this.openCard}>
+                <div className="card text-white" onClick={this.openCard}>
                     <div className="card-body">
-                        <h4 className="card-title text-center pb-3">
+                        <h4 className="card-title text-center pb-3 mb-4">
                             Project Name
                         </h4>
-                        <p className="card-text pb-3">
+                        <p className="card-text mb-3">
                             Information about the project
                         </p>
                     </div>
